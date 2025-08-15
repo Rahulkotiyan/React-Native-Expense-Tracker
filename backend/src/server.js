@@ -10,12 +10,17 @@ dotenv.config();
 
 const app = express();
 
-job.start();
+if(process.env.NODE_ENV==="production")
+    job.start();
 //middleware
 app.use(express.json());
 app.use(rateLimiter);
 
 const PORT = process.env.PORT||5001;
+
+app.get("api/health",(req,res)=>{
+    res.status(200).json({status:"ok"});
+});
 
 async function initDB() {
     try{
