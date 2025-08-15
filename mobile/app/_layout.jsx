@@ -6,9 +6,12 @@ import {tokenCache} from '@clerk/clerk-expo/token-cache'
 
 
 export default function RootLayout() {
-  <ClerkProvider tokenCache={tokenCache}>
-    <SafeScreen>
-      <Slot />
-    </SafeScreen>
-  </ClerkProvider>
+  return (
+    <ClerkProvider tokenCache={tokenCache}>
+      <SafeScreen>
+        <Slot />
+      </SafeScreen>
+    </ClerkProvider>
+  );
+  
 }
